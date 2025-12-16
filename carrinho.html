@@ -307,6 +307,72 @@
             padding: 4px 7px;
             border-radius: 50%;
         }
+
+        .footer {
+            background: rgba(10, 15, 31, 0.95);
+            border-top: 1px solid rgba(0, 247, 255, 0.2);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 90px;
+            padding: 30px 80px;
+        }
+
+        .footer-col h3,
+        .footer-col h4 {
+            font-family: "Orbitron", sans-serif;
+            color: #00f7ff;
+        }
+
+        .footer-col p {
+            color: #b8b8d0;
+        }
+
+        .footer-col ul li a,
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-col ul li a:hover,
+        .footer-links a:hover {
+            color: #00f7ff;
+        }
+
+        .footer-direitos {
+            border-top: 1px solid rgba(0, 247, 255, 0.2);
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+       
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(10, 15, 31, 0.95);
+            border: 1px solid rgba(0, 247, 255, 0.6);
+            color: #00f7ff;
+            padding: 14px 24px;
+            border-radius: 30px;
+            font-family: Orbitron, sans-serif;
+            font-size: 0.95rem;
+            box-shadow: 0 0 25px rgba(0, 247, 255, 0.6);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: toastIn 0.4s forwards;
+            z-index: 9999;
+        }
+
+        @keyframes toastIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 
     <script>
@@ -367,4 +433,5 @@
 
 </body>
 </html>
+
 
