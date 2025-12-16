@@ -25,6 +25,10 @@
 
     <main class="cart-container">
         <h2>🛒 Seu Carrinho</h2>
+        <p id="empty-cart" style="text-align:center; opacity:.7;">
+            Seu carrinho está vazio 🛒
+        </p>
+
         <div id="cart-items"></div>
         <div class="cart-total">
             <h3>Total: R$ <span id="total">0</span></h3>
@@ -204,6 +208,40 @@
             if (countEl) {
                 countEl.innerText = total;
             }
+
+            const emptyCart = document.getElementById('empty-cart');
+
+function renderCart() {
+    if (!cartItems || !totalEl) return;
+
+    cartItems.innerHTML = '';
+    let total = 0;
+
+    if (cart.length === 0) {
+        emptyCart.style.display = 'block';
+        totalEl.innerText = '0.00';
+        return;
+    }
+
+    emptyCart.style.display = 'none';
+
+    cart.forEach((item, index) => {
+        const qtd = item.quantidade || 1;
+        const subtotal = item.preco * qtd;
+        total += subtotal;
+
+        cartItems.innerHTML += `
+        <div class="cart-item">
+            <img src="${item.imagem}">
+            <h4>${item.nome} <small>(x${qtd})</small></h4>
+            <span>R$ ${subtotal.toFixed(2)}</span>
+            <button class="remove" onclick="removeItem(${index})">Remover</button>
+        </div>`;
+        });
+
+         totalEl.innerText = total.toFixed(2);
+       }
+
         }
 
         function addToCart(nome, preco, imagem) {
@@ -293,4 +331,5 @@
 
 
 </html>
+
 
