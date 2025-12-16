@@ -74,6 +74,7 @@
     </footer>
 
     <style>
+                /* RESET */
         * {
             margin: 0;
             padding: 0;
@@ -82,16 +83,15 @@
             font-family: "Montserrat", sans-serif;
         }
 
+        /* BODY */
         body {
             padding-top: 80px;
             background: linear-gradient(135deg, #0e0e44 100%);
             color: #fff;
             font-size: 16px;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
         }
 
+        /* HEADER */
         header {
             background: rgba(10, 15, 31, 0.85);
             backdrop-filter: blur(8px);
@@ -105,7 +105,96 @@
             z-index: 3;
         }
 
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: #00f7ff;
+            border-radius: 2px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            header nav {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: rgba(10, 15, 31, 0.95);
+                width: 100%;
+                display: none;
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 0;
+            }
+
+            header nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            header nav.active {
+                display: flex;
+            }
+        }
+
+
         .logo {
+            font-family: "Orbitron", sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+        }
+
+        .logo a {
+            font-family: "Orbitron", sans-serif;
+            text-decoration: none;
+            color: #00f7ff;
+        }
+
+        header nav ul {
+            display: flex;
+            gap: 48px;
+        }
+
+        header nav ul li {
+            position: relative;
+        }
+
+        header nav ul li a {
+            font-family: "Orbitron", sans-serif;
+            font-size: 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+
+        header nav ul li::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: #00f7ff;
+            transition: width 0.3s ease;
+        }
+
+        header nav ul li:hover::after {
+            width: 100%;
+        }
+
+      .logo {
             font-family: "Orbitron", sans-serif;
             font-size: 2rem;
             font-weight: 900;
@@ -278,3 +367,4 @@
 
 </body>
 </html>
+
