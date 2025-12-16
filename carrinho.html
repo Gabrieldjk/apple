@@ -80,6 +80,7 @@
     </footer>
 
     <style>
+        /* Reset e fontes */
         * {
             margin: 0;
             padding: 0;
@@ -88,12 +89,21 @@
             font-family: "Montserrat", sans-serif;
         }
 
+        html, body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
 
         body {
             padding-top: 80px;
             background: linear-gradient(135deg, #0e0e44 100%);
             color: #fff;
             font-size: 16px;
+        }
+
+        main {
+            flex: 1; /* Faz o main ocupar o espaço restante */
         }
 
         header {
@@ -123,34 +133,6 @@
             border-radius: 2px;
         }
 
-        @media (max-width: 768px) {
-
-            header nav {
-                position: absolute;
-                top: 100%;
-                right: 0;
-                background: rgba(10, 15, 31, 0.95);
-                width: 100%;
-                display: none;
-                flex-direction: column;
-                text-align: center;
-                padding: 20px 0;
-            }
-
-            header nav ul {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            header nav.active {
-                display: flex;
-            }
-        }
-
         .logo {
             font-family: "Orbitron", sans-serif;
             font-size: 2rem;
@@ -159,7 +141,6 @@
         }
 
         .logo a {
-            font-family: "Orbitron", sans-serif;
             text-decoration: none;
             color: #00f7ff;
         }
@@ -169,15 +150,12 @@
             gap: 48px;
         }
 
-        header nav ul li {
-            position: relative;
-        }
-
         header nav ul li a {
             font-family: "Orbitron", sans-serif;
             font-size: 20px;
             color: #fff;
             text-decoration: none;
+            position: relative;
         }
 
         header nav ul li::after {
@@ -193,20 +171,6 @@
 
         header nav ul li:hover::after {
             width: 100%;
-        }
-
-        @media (max-width: 768px) {
-            header nav {
-                position: absolute;
-                top: 100%;
-                right: 0;
-                background: rgba(10, 15, 31, 0.95);
-                width: 100%;
-                display: none;
-                flex-direction: column;
-                text-align: center;
-                padding: 20px 0;
-            }
         }
 
         .cart-container {
@@ -230,6 +194,7 @@
 
         .cart-item img {
             width: 90px;
+            max-width: 25%;
         }
 
         .cart-item span {
@@ -249,11 +214,9 @@
 
         .remove:hover {
             background: linear-gradient(135deg, #ff0033, #5a0018);
-            box-shadow: 0 0 15px rgba(255, 0, 51, 0.6);
-            transform: scale(1.08);
             box-shadow: 0 0 30px rgba(255, 0, 51, 0.6);
+            transform: scale(1.08);
         }
-
 
         .cart-total {
             margin-top: 40px;
@@ -295,11 +258,11 @@
             box-shadow: 0 0 30px rgba(0, 247, 255, 0.8);
         }
 
-
         .footer {
             background: rgba(10, 15, 31, 0.95);
             border-top: 1px solid rgba(0, 247, 255, 0.2);
             color: #fff;
+            flex-shrink: 0;
         }
 
         .footer-container {
@@ -309,38 +272,25 @@
             padding: 30px 80px;
         }
 
-        .footer-col h3 {
-            font-family: "orbitron", sans-serif;
-            font-size: 1.1rem;
-            color: #00f7ff;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(0, 247, 255, 0.4);
-        }
-
+        .footer-col h3,
         .footer-col h4 {
-            font-family: "orbitron", sans-serif;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
+            font-family: "Orbitron", sans-serif;
             color: #00f7ff;
+            margin-bottom: 20px;
         }
 
-        .footer-col p {
+        .footer-col p,
+        .footer-col ul li a {
             font-size: 0.95rem;
             color: #b8b8d0;
             line-height: 1.6;
+            text-decoration: none;
         }
 
         .footer-col ul {
             display: flex;
             flex-direction: column;
             gap: 12px;
-        }
-
-        .footer-col ul li a {
-            color: #b8b8d0;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: color 0.3s ease;
         }
 
         .footer-col ul li a:hover {
@@ -400,6 +350,75 @@
                 transform: translateY(0);
             }
         }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            header nav {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: rgba(10, 15, 31, 0.95);
+                width: 100%;
+                display: none;
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 0;
+            }
+
+            header nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            header nav.active {
+                display: flex;
+            }
+
+            .cart-container {
+                margin: 100px 15px;
+                padding: 20px;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .cart-total {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 20px 15px;
+            }
+
+            .footer-direitos {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header nav ul li a {
+                font-size: 18px;
+            }
+
+            .finalizar {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
     </style>
 
     <script>
@@ -504,9 +523,6 @@
             renderCart();
         });
     </script>
-
-
-
 
 </body>
 
