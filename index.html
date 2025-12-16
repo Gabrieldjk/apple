@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap"
+        rel="stylesheet">
+    <title>Loja Eletrônica</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="contato.html">Apple Tech</a>
+        </div>
+
+        <nav class="nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="carrinho.html" class="cart-icon">🛒<span id="cart-count">0</span></a></li>
+            </ul>
+        </nav>
+
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+
+    <div class="carousel-container">
+        <div class="carousel-track" id="track">
+
+            <div class="slide">
+                <img src="img/air-pods.png" alt="AirPods Max">
+                <div class="slide-content">
+                    <h2>AirPods Max</h2>
+                    <p>Experimente som de alta fidelidade com os AirPods Max. Cancelamento ativo de ruído, áudio
+                        espacial e design ergonômico para conforto durante todo o dia.</p>
+                    <button class="carrossel-butao"
+                        onclick="addToCart('Air Pods Max', 3499, 'img/air-pods.png')">Comprar</button>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="img/vision-pro.png" alt="Vision Pro">
+                <div class="slide-content">
+                    <h2>Vision Pro</h2>
+                    <p>O Vision Pro oferece uma experiência imersiva com realidade aumentada e virtual. Ideal para
+                        jogos, trabalho e entretenimento, com gráficos de alta qualidade e controle intuitivo.</p>
+                    <button class="carrossel-butao"
+                        onclick="addToCart('Apple Vision Pro', 19999, 'img/vision-pro.png')">Comprar</button>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="img/apple-watch.png" alt="Apple Watch">
+                <div class="slide-content">
+                    <h2>Apple Watch Series 10</h2>
+                    <p>O smartwathc mais avnçado do mercado. Monitoramento completo de saúde, GPS integrado, tlea AMOLED
+                        de alta resolução e resistência à água até 50 metros.</p>
+                    <button class="carrossel-butao"
+                        onclick="addToCart('Apple Watch Series 10', 4999, 'img/apple-watch.png')">Comprar</button>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="carousel-btn prev">‹</button>
+        <button class="carousel-btn next">›</button>
+    </div>
+
+
+    <!-- ÁREA DE PRODUTOS -->
+    <section class="secao-produtos">
+        <h2 class="titulo-secao">Produtos em Destaque</h2>
+
+        <div class="grid-produtos">
+
+            <div class="card-produto">
+                <img src="img/apple-watch.png" alt="Apple Watch">
+                <h3>Apple Watch Series 10</h3>
+                <p class="preco">R$ 4.999,00</p>
+                <button onclick="addToCart('Apple Watch Series 10', 4999, 'img/apple-watch.png')">Comprar</button>
+            </div>
+
+            <div class="card-produto">
+                <img src="img/air-pods.png" alt="AirPods Max">
+                <h3>AirPods Max</h3>
+                <p class="preco">R$ 3.499,00</p>
+                <button onclick="addToCart('Air Pods Max', 3499, 'img/air-pods.png')">Comprar</button>
+            </div>
+
+            <div class="card-produto">
+                <img src="img/vision-pro.png" alt="Vision Pro">
+                <h3>Apple Vision Pro</h3>
+                <p class="preco">R$ 19.999,00</p>
+                <button onclick="addToCart('Apple Vision Pro', 19999, 'img/vision-pro.png')">Comprar</button>
+            </div>
+
+            <div class="card-produto">
+                <img src="img/apple-watch.png" alt="Apple Watch">
+                <h3>Apple Watch Series 10</h3>
+                <p class="preco">R$ 4.999,00</p>
+                <button onclick="addToCart('Apple Watch Series 10', 4999, 'img/apple-watch.png')">Comprar</button>
+            </div>
+
+            <div class="card-produto">
+                <img src="img/air-pods.png" alt="AirPods Max">
+                <h3>AirPods Max</h3>
+                <p class="preco">R$ 3.499,00</p>
+                <button onclick="addToCart('Air Pods Max', 3499, 'img/air-pods.png')">Comprar</button>
+            </div>
+
+            <div class="card-produto">
+                <img src="img/vision-pro.png" alt="Vision Pro">
+                <h3>Apple Vision Pro</h3>
+                <p class="preco">R$ 19.999,00</p>
+                <button onclick="addToCart('Apple Vision Pro', 19999, 'img/vision-pro.png')">Comprar</button>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- SOBRE -->
+            <div class="footer-col">
+                <h3>Apple Tech</h3>
+                <p>
+                    Tecnologia de ponta para quem busca inovação, desempenho e design.
+                    Trabalhamos com os produtos mais avançados do mercado eletrônico.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Suporte</h4>
+                <ul>
+                    <li><a href="#">Sobre nós</a></li>
+                    <li><a href="#">Central de ajuda</a></li>
+                    <li><a href="#">Trocas e devoluções</a></li>
+                    <li><a href="#">Garantia</a></li>
+                    <li><a href="#">Fale conosco</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <p>📍 Minas Gerais – MG</p>
+                <p>📞 (38) 99999-9999</p>
+                <p>✉ contato@appletech.com</p>
+            </div>
+
+        </div>
+
+        <!-- PARTE FINAL -->
+        <div class="footer-direitos">
+            <p>© 2025 Apple Tech. Todos os direitos reservados.</p>
+            <div class="footer-links">
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Cookies</a>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+<script src="javascript.js"></script>
+
+</html>
