@@ -25,13 +25,15 @@
 
     <main class="cart-container">
         <h2>🛒 Seu Carrinho</h2>
+
         <p id="empty-cart" style="text-align:center; opacity:.7;">
             Seu carrinho está vazio 🛒
         </p>
 
         <div id="cart-items"></div>
+
         <div class="cart-total">
-            <h3>Total: R$ <span id="total">0</span></h3>
+            <h3>Total: R$ <span id="total">0.00</span></h3>
             <button class="finalizar">Finalizar Compra</button>
         </div>
     </main>
@@ -59,6 +61,7 @@
                 <p>✉ contato@appletech.com</p>
             </div>
         </div>
+
         <div class="footer-direitos">
             <p>© 2025 Apple Tech. Todos os direitos reservados.</p>
             <div class="footer-links">
@@ -74,7 +77,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            list-style: none;
             font-family: "Montserrat", sans-serif;
         }
 
@@ -95,16 +97,15 @@
         }
 
         header {
-            background: rgba(10, 15, 31, 0.85);
-            backdrop-filter: blur(8px);
             position: fixed;
-            width: 100%;
             top: 0;
+            width: 100%;
+            background: rgba(10, 15, 31, 0.85);
             padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 3;
+            z-index: 10;
         }
 
         .logo a {
@@ -117,28 +118,27 @@
         nav ul {
             display: flex;
             gap: 40px;
+            list-style: none;
         }
 
         nav ul li a {
             font-family: Orbitron, sans-serif;
             color: #fff;
             text-decoration: none;
-            font-size: 18px;
         }
 
         .cart-container {
             max-width: 900px;
+            margin: 140px auto 60px;
             padding: 40px;
             background: rgba(10, 15, 31, 0.8);
             border-radius: 30px;
             box-shadow: 0 0 30px rgba(0, 247, 255, .3);
             min-height: 300px;
-            margin: 140px auto 60px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
-
 
         .cart-total {
             margin-top: 40px;
@@ -154,27 +154,6 @@
             background: linear-gradient(90deg, #00f7ff, #0066ff);
             font-weight: 700;
             cursor: pointer;
-        }
-
-        .footer {
-            background: rgba(10, 15, 31, 0.95);
-            border-top: 1px solid rgba(0, 247, 255, 0.2);
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 60px;
-            padding: 40px 80px;
-        }
-
-        .footer-direitos {
-            border-top: 1px solid rgba(0, 247, 255, 0.2);
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
         }
 
         .cart-icon {
@@ -196,86 +175,31 @@
             border-radius: 50%;
         }
     </style>
+
     <script>
-        function updateCartCount() {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-            let total = cart.reduce((sum, item) => {
-                return sum + Number(item.quantidade || 1);
-            }, 0);
-
-            const countEl = document.getElementById('cart-count');
-            if (countEl) {
-                countEl.innerText = total;
-            }
-
-            const emptyCart = document.getElementById('empty-cart');
-
-function renderCart() {
-    if (!cartItems || !totalEl) return;
-
-    cartItems.innerHTML = '';
-    let total = 0;
-
-    if (cart.length === 0) {
-        emptyCart.style.display = 'block';
-        totalEl.innerText = '0.00';
-        return;
-    }
-
-    emptyCart.style.display = 'none';
-
-    cart.forEach((item, index) => {
-        const qtd = item.quantidade || 1;
-        const subtotal = item.preco * qtd;
-        total += subtotal;
-
-        cartItems.innerHTML += `
-        <div class="cart-item">
-            <img src="${item.imagem}">
-            <h4>${item.nome} <small>(x${qtd})</small></h4>
-            <span>R$ ${subtotal.toFixed(2)}</span>
-            <button class="remove" onclick="removeItem(${index})">Remover</button>
-        </div>`;
-        });
-
-         totalEl.innerText = total.toFixed(2);
-       }
-
-        }
-
-        function addToCart(nome, preco, imagem) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-            let existing = cart.find(item => item.nome === nome);
-
-            if (existing) {
-                existing.quantidade += 1;
-            } else {
-                cart.push({
-                    nome,
-                    preco: Number(preco),
-                    imagem,
-                    quantidade: 1
-                });
-            }
-
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
-
-            showToast("Produto adicionado ao carrinho");
-        }
-
         const cartItems = document.getElementById('cart-items');
         const totalEl = document.getElementById('total');
+        const emptyCart = document.getElementById('empty-cart');
 
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        function renderCart() {
-            if (!cartItems || !totalEl) return;
+        function updateCartCount() {
+            const countEl = document.getElementById('cart-count');
+            const total = cart.reduce((sum, item) => sum + (item.quantidade || 1), 0);
+            if (countEl) countEl.innerText = total;
+        }
 
+        function renderCart() {
             cartItems.innerHTML = '';
             let total = 0;
+
+            if (cart.length === 0) {
+                emptyCart.style.display = 'block';
+                totalEl.innerText = '0.00';
+                return;
+            }
+
+            emptyCart.style.display = 'none';
 
             cart.forEach((item, index) => {
                 const qtd = item.quantidade || 1;
@@ -283,13 +207,13 @@ function renderCart() {
                 total += subtotal;
 
                 cartItems.innerHTML += `
-            <div class="cart-item">
-                <img src="${item.imagem}">
-                <h4>${item.nome} <small>(x${qtd})</small></h4>
-                <span>R$ ${subtotal.toFixed(2)}</span>
-                <button class="remove" onclick="removeItem(${index})">Remover</button>
-            </div>
-        `;
+                    <div class="cart-item">
+                        <img src="${item.imagem}">
+                        <h4>${item.nome} <small>(x${qtd})</small></h4>
+                        <span>R$ ${subtotal.toFixed(2)}</span>
+                        <button onclick="removeItem(${index})">Remover</button>
+                    </div>
+                `;
             });
 
             totalEl.innerText = total.toFixed(2);
@@ -298,38 +222,32 @@ function renderCart() {
         function removeItem(index) {
             cart.splice(index, 1);
             localStorage.setItem('cart', JSON.stringify(cart));
-            renderCart();
             updateCartCount();
-
+            renderCart();
             showToast("Produto removido do carrinho");
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.textContent = message;
+            toast.style.position = 'fixed';
+            toast.style.bottom = '30px';
+            toast.style.right = '30px';
+            toast.style.background = '#0f0f1e';
+            toast.style.color = '#00f7ff';
+            toast.style.padding = '12px 20px';
+            toast.style.borderRadius = '30px';
+            toast.style.boxShadow = '0 0 20px rgba(0,247,255,.6)';
+            document.body.appendChild(toast);
+
+            setTimeout(() => toast.remove(), 2500);
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             updateCartCount();
             renderCart();
         });
-
-        function showToast(message) {
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.innerText = message;
-
-            document.body.appendChild(toast);
-
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                toast.style.transform = 'translateY(20px)';
-                setTimeout(() => toast.remove(), 300);
-            }, 2500);
-        }
     </script>
 
-
-
-
 </body>
-
-
 </html>
-
-
