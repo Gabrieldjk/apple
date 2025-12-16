@@ -22,6 +22,12 @@
                 <li><a href="carrinho.html" class="cart-icon">🛒<span id="cart-count">0</span></a></li>
             </ul>
         </nav>
+
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </header>
 
     <main class="cart-container">
@@ -74,7 +80,7 @@
     </footer>
 
     <style>
-                  * {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -82,7 +88,7 @@
             font-family: "Montserrat", sans-serif;
         }
 
-        /* BODY */
+
         body {
             padding-top: 80px;
             background: linear-gradient(135deg, #0e0e44 100%);
@@ -90,7 +96,6 @@
             font-size: 16px;
         }
 
-        /* HEADER */
         header {
             background: rgba(10, 15, 31, 0.85);
             backdrop-filter: blur(8px);
@@ -118,7 +123,6 @@
             border-radius: 2px;
         }
 
-        /* MOBILE */
         @media (max-width: 768px) {
 
             header nav {
@@ -133,6 +137,19 @@
                 padding: 20px 0;
             }
 
+            header nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            header nav.active {
+                display: flex;
+            }
+        }
 
         .logo {
             font-family: "Orbitron", sans-serif;
@@ -163,7 +180,6 @@
             text-decoration: none;
         }
 
-
         header nav ul li::after {
             content: '';
             position: absolute;
@@ -179,27 +195,18 @@
             width: 100%;
         }
 
-      .logo {
-            font-family: "Orbitron", sans-serif;
-            font-size: 2rem;
-            font-weight: 900;
-        }
-
-        .logo a {
-            text-decoration: none;
-            color: #00f7ff;
-        }
-
-        header nav ul {
-            display: flex;
-            gap: 48px;
-        }
-
-        header nav ul li a {
-            font-family: "Orbitron", sans-serif;
-            font-size: 20px;
-            color: #fff;
-            text-decoration: none;
+        @media (max-width: 768px) {
+            header nav {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: rgba(10, 15, 31, 0.95);
+                width: 100%;
+                display: none;
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 0;
+            }
         }
 
         .cart-container {
@@ -225,10 +232,6 @@
             width: 90px;
         }
 
-        .cart-item h4 {
-            flex: 1;
-        }
-
         .cart-item span {
             color: #00f7ff;
             font-weight: bold;
@@ -237,24 +240,11 @@
         .remove {
             font-family: "Orbitron", sans-serif;
             background: linear-gradient(135deg, #5a0018, #ff0033);
-            color: #ffffff;
+            color: #fff;
             border: none;
             padding: 10px 18px;
             border-radius: 30px;
             cursor: pointer;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            box-shadow:
-                0 0 10px rgba(255, 0, 60, 0.6),
-                0 0 25px rgba(255, 0, 60, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .remove:hover {
-            transform: translateY(-4px) scale(1.08);
-            box-shadow:
-                0 0 15px rgba(255, 0, 60, 0.9),
-                0 0 40px rgba(255, 0, 60, 0.8);
         }
 
         .cart-total {
@@ -262,16 +252,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .finalizar {
-            padding: 12px 28px;
-            border-radius: 30px;
-            border: none;
-            background: linear-gradient(90deg, #00f7ff, #0066ff);
-            color: #000;
-            font-weight: 700;
-            cursor: pointer;
         }
 
         .cart-icon {
@@ -293,9 +273,20 @@
             border-radius: 50%;
         }
 
+        .finalizar {
+            padding: 12px 28px;
+            border-radius: 30px;
+            border: none;
+            background: linear-gradient(90deg, #00f7ff, #0066ff);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+
         .footer {
             background: rgba(10, 15, 31, 0.95);
             border-top: 1px solid rgba(0, 247, 255, 0.2);
+            color: #fff;
         }
 
         .footer-container {
@@ -305,35 +296,73 @@
             padding: 30px 80px;
         }
 
-        .footer-col h3,
+        .footer-col h3 {
+            font-family: "orbitron", sans-serif;
+            font-size: 1.1rem;
+            color: #00f7ff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.4);
+        }
+
         .footer-col h4 {
-            font-family: "Orbitron", sans-serif;
+            font-family: "orbitron", sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
             color: #00f7ff;
         }
 
         .footer-col p {
+            font-size: 0.95rem;
             color: #b8b8d0;
+            line-height: 1.6;
         }
 
-        .footer-col ul li a,
-        .footer-links a {
-            color: #fff;
+        .footer-col ul {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-col ul li a {
+            color: #b8b8d0;
+            font-size: 0.95rem;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        .footer-col ul li a:hover,
-        .footer-links a:hover {
+        .footer-col ul li a:hover {
             color: #00f7ff;
         }
 
         .footer-direitos {
-            border-top: 1px solid rgba(0, 247, 255, 0.2);
+            border-top: 3px solid rgba(0, 247, 255, 0.2);
             padding: 20px 8%;
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
-       
+        .footer-direitos p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #00f7ff;
+        }
+
         .toast {
             position: fixed;
             bottom: 30px;
@@ -361,63 +390,111 @@
     </style>
 
     <script>
-        const cartItems = document.getElementById('cart-items')
-        const totalEl = document.getElementById('total')
-        const emptyCart = document.getElementById('empty-cart')
+        const toggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('header nav');
 
-        let cart = JSON.parse(localStorage.getItem('cart')) || []
-
-        function updateCartCount() {
-            const countEl = document.getElementById('cart-count')
-            const total = cart.reduce((sum, item) => sum + (item.quantidade || 1), 0)
-            if (countEl) countEl.innerText = total
+        if (toggle) {
+            toggle.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
         }
 
-        function renderCart() {
-            cartItems.innerHTML = ''
-            let total = 0
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerText = message;
 
-            if (cart.length === 0) {
-                emptyCart.style.display = 'block'
-                totalEl.innerText = '0.00'
-                return
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(20px)';
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+        }
+
+        function updateCartCount() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            let total = cart.reduce((sum, item) => {
+                return sum + Number(item.quantidade || 1);
+            }, 0);
+
+            const countEl = document.getElementById('cart-count');
+            if (countEl) {
+                countEl.innerText = total;
+            }
+        }
+
+        function addToCart(nome, preco, imagem) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            let existing = cart.find(item => item.nome === nome);
+
+            if (existing) {
+                existing.quantidade += 1;
+            } else {
+                cart.push({
+                    nome,
+                    preco: Number(preco),
+                    imagem,
+                    quantidade: 1
+                });
             }
 
-            emptyCart.style.display = 'none'
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+
+            showToast(`${nome} adicionado ao carrinho`);
+        }
+
+        const cartItems = document.getElementById('cart-items');
+        const totalEl = document.getElementById('total');
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function renderCart() {
+            if (!cartItems || !totalEl) return;
+
+            cartItems.innerHTML = '';
+            let total = 0;
 
             cart.forEach((item, index) => {
-                const qtd = item.quantidade || 1
-                const subtotal = item.preco * qtd
-                total += subtotal
+                const qtd = item.quantidade || 1;
+                const subtotal = item.preco * qtd;
+                total += subtotal;
 
                 cartItems.innerHTML += `
-                    <div class="cart-item">
-                        <img src="${item.imagem}">
-                        <h4>${item.nome} <small>(x${qtd})</small></h4>
-                        <span>R$ ${subtotal.toFixed(2)}</span>
-                        <button class="remove" onclick="removeItem(${index})">Remover</button>
-                    </div>
-                `
-            })
+            <div class="cart-item">
+                <img src="${item.imagem}">
+                    <h4>${item.nome} <small>(x${qtd})</small></h4>
+                    <span>R$ ${subtotal.toFixed(2)}</span>
+                    <button class="remove" onclick="removeItem(${index})">Remover</button>
+            </div>
+                `;
+            });
 
-            totalEl.innerText = total.toFixed(2)
+            totalEl.innerText = total.toFixed(2);
         }
 
         function removeItem(index) {
-            cart.splice(index, 1)
-            localStorage.setItem('cart', JSON.stringify(cart))
-            updateCartCount()
-            renderCart()
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            updateCartCount();
+
+            showToast("Produto removido do carrinho");
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            updateCartCount()
-            renderCart()
-        })
+            updateCartCount();
+            renderCart();
+        });
     </script>
 
+
+
+
 </body>
+
 </html>
-
-
-
