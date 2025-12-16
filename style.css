@@ -6,7 +6,6 @@
             font-family: "Montserrat", sans-serif;
         }
 
-        /* BODY */
         body {
             padding-top: 80px;
             background: linear-gradient(135deg, #0e0e44 100%);
@@ -14,7 +13,6 @@
             font-size: 16px;
         }
 
-        /* HEADER */
         header {
             background: rgba(10, 15, 31, 0.85);
             backdrop-filter: blur(8px);
@@ -42,7 +40,6 @@
             border-radius: 2px;
         }
 
-        /* MOBILE */
         @media (max-width: 768px) {
 
             header nav {
@@ -433,4 +430,5 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+
         }
